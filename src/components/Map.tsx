@@ -6,16 +6,24 @@ function Map() {
     let handleClick: (event: React.MouseEvent<HTMLElement>) => void;
 
     handleClick = (event) => {
-        console.log(event);
-        console.log(event.pageX, event.pageY);
-        const mapContainer = document.querySelector('.Map-container');
-        const map = document.querySelector('.map');
-        const box = document.createElement('div');
-        box.classList.add('target-box');
-        box.style.position = 'absolute';
-        box.style.top = `calc(${event.pageY}px - calc(var(--target-box-size) / 2))`;
-        box.style.left = `calc(${event.pageX}px - calc(var(--target-box-size) / 2))`;
-        mapContainer?.appendChild(box);
+        //console.log(event);
+        //console.log(event.pageX, event.pageY);
+
+        // If target box is present, we remove it. Otherwise, we draw it
+        const targetBox = document.querySelector('.target-box');
+        if (targetBox) {
+            targetBox.remove();
+        } else {
+            const mapContainer = document.querySelector('.Map-container');
+            const box = document.createElement('div');
+            box.classList.add('target-box');
+            box.style.position = 'absolute';
+            box.style.top = `calc(${event.pageY}px - calc(var(--target-box-size) / 2))`;
+            box.style.left = `calc(${event.pageX}px - calc(var(--target-box-size) / 2))`;
+            mapContainer?.appendChild(box);
+        }
+        
+        
     }
 
     return (
