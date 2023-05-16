@@ -41,13 +41,23 @@ const Map: React.FC<Props> = ({targets}) => {
             if (event.pageX + 300 > window.screen.width) {
                 // Render on Left
                 targetMenu.style.top = `calc(${event.pageY}px - calc(var(--target-box-size) / 2))`;
-                targetMenu.style.left = `calc((calc(calc(${event.pageX}px - var(--target-box-size)) - var(--target-box-size))) - 30px)`;
+                targetMenu.style.left = `calc((calc(${event.pageX}px - calc(var(--target-box-size) * 2)) - 30px)`;
+                // eventPageX - (target-box-size * 2) + 30px
+                //     ^                 ^                ^
+                // click pos             ^                 ^
+                //             menu starts at end of box    \
+                //                                          gap
                 box.style.borderRadius = '0% 20% 20% 0%';
                 targetMenu.style.borderRadius = '20% 0% 0% 20%';
             } else {
                  // Render on right
                 targetMenu.style.top = `calc(${event.pageY}px - calc(var(--target-box-size) / 2))`;
-                targetMenu.style.left = `calc((calc(calc(${event.pageX}px - var(--target-box-size)) + calc(var(--target-box-size) * 1.5))) + 30px)`;
+                // eventPageY + (target-box-size * 0.5) + 30px
+                //     ^               ^                    ^
+                // click pos           ^                    ^
+                //               menu starts at end of box   \
+                //                                           gap
+                targetMenu.style.left = `calc((calc(${event.pageX}px + calc(var(--target-box-size) * 0.5))) + 30px)`;
                 targetMenu.style.borderRadius = '0% 20% 20% 0%';
                 box.style.borderRadius = '20% 0% 0% 20%';
             }
