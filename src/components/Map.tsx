@@ -42,7 +42,22 @@ const Map: React.FC<Props> = ({targets}) => {
             }
         }
     }
+    let validateAnswer: (name: string, posX: number, posY: number) => void;
+    validateAnswer = (name, posX, posY) => {
+        targets.forEach((target) => {
+            if(posX > target['endX'] || posX < target['startX']) {
+                return
+            }
 
+            if(posY > target['endY'] || posY < target['startY']) {
+                return
+            }
+
+            if(target['name'] === name) {
+                console.log('Correct!');
+            }
+        })
+    }
     return (
     <div className="Map-container">
         <img className='map'src={map} alt='Giant poster with a lot of crossovers' onClick={handleClick}></img>
@@ -53,7 +68,7 @@ const Map: React.FC<Props> = ({targets}) => {
         { isClicked ? 
         <>
             <TargetBox isLeft={isMenuOnLeft} pageX={pageX} pageY={pageY}/> 
-            <TargetMenu isLeft={isMenuOnLeft} pageX={pageX} pageY={pageY} targets={targets}/>
+            <TargetMenu isLeft={isMenuOnLeft} pageX={pageX} pageY={pageY} targets={targets} validateAnswer={validateAnswer}/>
         </> : ''}
     </div>
   );

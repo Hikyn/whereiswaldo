@@ -11,11 +11,12 @@ interface Props {
         startY: number,
         endX: number,
         endY: number
-    }[]
+    }[],
+    validateAnswer: (name: string, posX: number, posY: number) => void;
 }
 
 const TargetMenu: React.FC<Props> = ({ 
-    isLeft, pageX, pageY, targets
+    isLeft, pageX, pageY, targets, validateAnswer
 }) => {
     let leftCss: string;
     if (isLeft) {
@@ -37,7 +38,7 @@ const TargetMenu: React.FC<Props> = ({
             <style>{css}</style>
             {targets.map((target) => {
                 return(
-                    <div key={target.name}>{target.name}</div>
+                    <button key={target.name} onClick={() => validateAnswer(target.name, pageX, pageY)}>{target.name}</button>
                 )
             })}
         </div>
