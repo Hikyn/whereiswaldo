@@ -1,0 +1,6 @@
+.target-menu {
+    --target-menu-size: 150px;
+    background-color: rgba(255, 255, 255, 0.685);
+    height: var(--target-menu-size);
+    width: var(--target-menu-size);
+}
