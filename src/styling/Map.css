@@ -1,0 +1,27 @@
+.map {
+    width: 100%;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    position: sticky;
+    bottom: 0rem;
+
+    margin: -6rem 3rem;
+
+}
+
+footer .card {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 2rem;
+    background-color: rgba(245, 222, 179, 0.282);
+    transition: all 1s;
+}
+
+footer .card:hover {
+    background-color: rgb(245, 222, 179);
+}

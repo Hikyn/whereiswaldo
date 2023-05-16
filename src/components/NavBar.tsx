@@ -2,8 +2,12 @@ import React from 'react';
 import '../styling/NavBar.css';
 import GameUiControls from './GameUiControls';
 
-function NavBar() {
-    const isGameStarted: boolean = false;
+interface Props {
+    isLoggedIn: boolean;
+    isGameStarted: boolean;
+}
+
+const NavBar: React.FC<Props> = ({ isLoggedIn, isGameStarted}) => {
     return (
         <div className="NavBar">
             {isGameStarted ? <GameUiControls/> : <>NO UI</>}
