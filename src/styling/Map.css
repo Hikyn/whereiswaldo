@@ -1,11 +1,22 @@
-.Map-container .target-box {
+.Map-container {
     /*Important for centering target-box via JS*/
-    --target-box-size: 100px;
 
+    --target-box-size: 100px;
+}
+
+.Map-container .target-box {
     box-sizing: border-box;
     background-color: rgba(255, 255, 255, 0.423);
     height: var(--target-box-size);
     width: var(--target-box-size);
+    border-radius: calc(var(--target-box-size) / 4);
+}
+
+.Map-container .target-menu {
+    --target-menu-size: 150px;
+    background-color: rgba(255, 255, 255, 0.423);
+    height: var(--target-menu-size);
+    width: var(--target-menu-size);
     border-radius: calc(var(--target-box-size) / 4);
 }
 
@@ -23,6 +34,8 @@ footer {
 
     margin: -6rem 3rem;
 
+    /* Make element pass-through */
+    pointer-events: none;
 }
 
 footer .card {
@@ -31,6 +44,9 @@ footer .card {
     padding: 2rem;
     background-color: rgba(245, 222, 179, 0.282);
     transition: all 1s;
+
+    /* Make element pass-through */
+    pointer-events: auto;
 }
 
 footer .card:hover {

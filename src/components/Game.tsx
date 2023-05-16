@@ -9,10 +9,17 @@ function Game() {
   
   // TO DO: Change to true after implementing login system
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+  const [targets, setTargets] = useState({
+    name: 'Avatar',
+    posX: 2018,
+    posY: 1519
+   });
+
   return (
     <div className="Game">
       <NavBar isLoggedIn={isLoggedIn} isGameStarted={isGameStarted}/>
-      <Map />
+      <Map targets={targets}/>
     </div>
   );
 }
