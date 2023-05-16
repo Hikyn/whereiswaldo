@@ -30,7 +30,6 @@ const Map: React.FC<Props> = ({targets}) => {
             box.style.position = 'absolute';
             box.style.top = `calc(${event.pageY}px - calc(var(--target-box-size) / 2))`;
             box.style.left = `calc(${event.pageX}px - calc(var(--target-box-size) / 2))`;
-            mapContainer?.appendChild(box);
 
             // Create menu on left or right side of cursor 
             // depending on proximity to border of map
@@ -41,13 +40,17 @@ const Map: React.FC<Props> = ({targets}) => {
             if (event.pageX + 300 > window.screen.width) {
                 // Render on Left
                 targetMenu.style.top = `calc(${event.pageY}px - calc(var(--target-box-size) / 2))`;
-                targetMenu.style.left = `calc(calc(${event.pageX}px - var(--target-box-size)) - var(--target-box-size))`;
+                targetMenu.style.left = `calc((calc(calc(${event.pageX}px - var(--target-box-size)) - var(--target-box-size))) - 30px)`;
+                box.style.borderRadius = '0% 20% 20% 0%';
+                targetMenu.style.borderRadius = '20% 0% 0% 20%';
             } else {
                  // Render on right
-                 targetMenu.style.top = `calc(${event.pageY}px - calc(var(--target-box-size) / 2))`;
-                 targetMenu.style.left = `calc(calc(${event.pageX}px - var(--target-box-size)) + calc(var(--target-box-size) * 1.5))`;
+                targetMenu.style.top = `calc(${event.pageY}px - calc(var(--target-box-size) / 2))`;
+                targetMenu.style.left = `calc((calc(calc(${event.pageX}px - var(--target-box-size)) + calc(var(--target-box-size) * 1.5))) + 30px)`;
+                targetMenu.style.borderRadius = '0% 20% 20% 0%';
+                box.style.borderRadius = '20% 0% 0% 20%';
             }
-            
+            mapContainer?.appendChild(box);
             mapContainer?.appendChild(targetMenu);
         }
     }
