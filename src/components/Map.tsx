@@ -5,16 +5,18 @@ import React from 'react';
 interface Props {
     targets: {
         name: string,
-        posX: number,
-        posY: number
-    }
+        startX: number,
+        startY: number,
+        endX: number,
+        endY: number
+    }[]
 }
 const Map: React.FC<Props> = ({targets}) => {
     let handleClick: (event: React.MouseEvent<HTMLElement>) => void;
 
     handleClick = (event) => {
-        console.log(event);
-        //console.log(event.pageX, event.pageY);
+        //console.log(event);
+        console.log(event.pageX, event.pageY);
 
         // If target box is present, we remove it. Otherwise, we draw it
         const existingTargetBox = document.querySelector('.target-box');
@@ -33,7 +35,6 @@ const Map: React.FC<Props> = ({targets}) => {
 
             // Create menu on left or right side of cursor 
             // depending on proximity to border of map
-            console.log(window.screen.width);
             const targetMenu = document.createElement('div');
             targetMenu.classList.add('target-menu');
             targetMenu.style.position = 'absolute';
@@ -50,6 +51,14 @@ const Map: React.FC<Props> = ({targets}) => {
                 targetMenu.style.borderRadius = '0% 20% 20% 0%';
                 box.style.borderRadius = '20% 0% 0% 20%';
             }
+
+            // Append targets to menu
+            targets.forEach((target) => {
+                const character = document.createElement('div');
+                character.textContent = target['name'];
+                targetMenu.appendChild(character);
+            })
+            
             mapContainer?.appendChild(box);
             mapContainer?.appendChild(targetMenu);
         }

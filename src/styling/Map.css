@@ -8,7 +8,7 @@
     box-sizing: border-box;
     background-image: url('../images/icons8-target-100.png');
     background-size: cover;
-    background-color: rgba(255, 255, 255, 0.116);
+    background-color: rgba(255, 255, 255, 0.5);
     height: var(--target-box-size);
     width: var(--target-box-size);
     border-radius: calc(var(--target-box-size) / 4);
