@@ -13,7 +13,51 @@ interface Props {
 }
 const Map: React.FC<Props> = ({targets}) => {
     let handleClick: (event: React.MouseEvent<HTMLElement>) => void;
+    let createTargetBox: (event: React.MouseEvent<HTMLElement>, isLeft: boolean) => HTMLElement;
+    let createMenu: (event: React.MouseEvent<HTMLElement>, isLeft: boolean) => HTMLElement;
 
+    createTargetBox = (event, isLeft) => {
+        const box = document.createElement('div');
+
+        box.classList.add('target-box');
+        box.style.position = 'absolute';
+        box.style.top = `calc(${event.pageY}px - calc(var(--target-box-size) / 2))`;
+        box.style.left = `calc(${event.pageX}px - calc(var(--target-box-size) / 2))`;
+
+        if (isLeft) {
+            box.style.borderRadius = '0% 20% 20% 0%';
+        } else {
+            box.style.borderRadius = '20% 0% 0% 20%';
+        }
+        return box;
+    }
+
+    createMenu = (event, isLeft) => {
+        const targetMenu = document.createElement('div');
+        targetMenu.classList.add('target-menu');
+        targetMenu.style.position = 'absolute';
+
+        if (isLeft) {
+            targetMenu.style.top = `calc(${event.pageY}px - calc(var(--target-box-size) / 2))`;
+            targetMenu.style.left = `calc((calc(${event.pageX}px - calc(var(--target-box-size) * 2)) - 30px)`;
+            // eventPageX - (target-box-size * 2) + 30px
+            //     ^                 ^                ^
+            // click pos             ^                 ^
+            //             menu starts at end of box    \
+            //                                          gap
+            targetMenu.style.borderRadius = '20% 0% 0% 20%';
+        } else {
+            targetMenu.style.top = `calc(${event.pageY}px - calc(var(--target-box-size) / 2))`;
+            targetMenu.style.left = `calc((calc(${event.pageX}px + calc(var(--target-box-size) * 0.5))) + 30px)`;
+            // eventPageY + (target-box-size * 0.5) + 30px
+            //     ^               ^                    ^
+            // click pos           ^                    ^
+            //               menu starts at end of box   \
+            //                                           gap
+            targetMenu.style.borderRadius = '0% 20% 20% 0%';
+        }
+        return targetMenu;
+    }
     handleClick = (event) => {
         //console.log(event);
         console.log(event.pageX, event.pageY);
@@ -27,40 +71,18 @@ const Map: React.FC<Props> = ({targets}) => {
         } else {
             // Create target box at click center
             const mapContainer = document.querySelector('.Map-container');
-            const box = document.createElement('div');
-            box.classList.add('target-box');
-            box.style.position = 'absolute';
-            box.style.top = `calc(${event.pageY}px - calc(var(--target-box-size) / 2))`;
-            box.style.left = `calc(${event.pageX}px - calc(var(--target-box-size) / 2))`;
 
-            // Create menu on left or right side of cursor 
-            // depending on proximity to border of map
-            const targetMenu = document.createElement('div');
-            targetMenu.classList.add('target-menu');
-            targetMenu.style.position = 'absolute';
+            // Create menu on right if cursor is not close to right border
+            let isLeft: boolean;
             if (event.pageX + 300 > window.screen.width) {
-                // Render on Left
-                targetMenu.style.top = `calc(${event.pageY}px - calc(var(--target-box-size) / 2))`;
-                targetMenu.style.left = `calc((calc(${event.pageX}px - calc(var(--target-box-size) * 2)) - 30px)`;
-                // eventPageX - (target-box-size * 2) + 30px
-                //     ^                 ^                ^
-                // click pos             ^                 ^
-                //             menu starts at end of box    \
-                //                                          gap
-                box.style.borderRadius = '0% 20% 20% 0%';
-                targetMenu.style.borderRadius = '20% 0% 0% 20%';
+                // Render box on Left
+                isLeft = true;
             } else {
-                 // Render on right
-                targetMenu.style.top = `calc(${event.pageY}px - calc(var(--target-box-size) / 2))`;
-                // eventPageY + (target-box-size * 0.5) + 30px
-                //     ^               ^                    ^
-                // click pos           ^                    ^
-                //               menu starts at end of box   \
-                //                                           gap
-                targetMenu.style.left = `calc((calc(${event.pageX}px + calc(var(--target-box-size) * 0.5))) + 30px)`;
-                targetMenu.style.borderRadius = '0% 20% 20% 0%';
-                box.style.borderRadius = '20% 0% 0% 20%';
+                isLeft = false;
             }
+
+            const targetBox = createTargetBox(event, isLeft)
+            const targetMenu = createMenu(event, isLeft)
 
             // Append targets to menu
             targets.forEach((target) => {
@@ -69,7 +91,7 @@ const Map: React.FC<Props> = ({targets}) => {
                 targetMenu.appendChild(character);
             })
             
-            mapContainer?.appendChild(box);
+            mapContainer?.appendChild(targetBox);
             mapContainer?.appendChild(targetMenu);
         }
     }
