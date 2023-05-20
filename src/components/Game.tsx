@@ -3,7 +3,9 @@ import '../styling/Game.css';
 import NavBar from './NavBar';
 import Map from './Map';
 import randomTargets from '../randomTargets';
-import StartingScreen from './StartingScreen';
+import PopUpScreen from './PopUpScreen';
+import Introduction from './Introduction';
+import TargetIntroduction from './TargetIntroduction';
 
 function Game() {
   type Target = {
@@ -70,7 +72,7 @@ function Game() {
     <div className="Game">
       <NavBar targets={targets} isLoggedIn={isLoggedIn} isGameStarted={isGameStarted} isGameFinished={isGameFinished}/>
       <Map targets={targets} addToFoundTargets={addToFoundTargets} isGameStarted={isGameStarted}/>
-      {isGameStarted ? '' : <StartingScreen targets={targets} startGame={startGame}/>}
+      {isGameStarted ? '' : <PopUpScreen leftSide={<Introduction />} rightSide={<TargetIntroduction targets={targets} startGame={startGame}/>} />}
     </div>
   );
 }

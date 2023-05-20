@@ -1,0 +1,16 @@
+
+@media (max-width: 1000px) {
+    .introduction {
+        padding: 1em;
+    }
+
+}
+
+.introduction {
+    height: 100%;
+    box-sizing: border-box;
+    min-width: 10em;
+    text-align: left;
+    border-right: 5px solid rgba(0, 0, 0, 0.319);
+    padding: 3em;
+}

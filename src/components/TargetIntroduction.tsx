@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styling/StartingScreen.css';
+import '../styling/TargetIntroduction.css';
 
 type Target = {
     name: string,
@@ -15,17 +15,12 @@ interface Props {
     targets: TargetList,
     startGame: () => void;
 }
-const StartingScreen: React.FC<Props> = ({targets, startGame}) => {
+
+const TargetIntroduction: React.FC<Props> = ({targets, startGame}) => {
+
     return (
-        <div className="StartingScreen">
-            <div className="introduction">
-                <h1>How to play</h1>
-                <div>1. Locate required character</div>
-                <div>2. Click on him</div>
-                <div>3. Select from new menu which character you think you found</div>
-            </div>
-            <div className='targets'>
-                <h1>You need to find:</h1>
+        <div className='targets'>
+            <h1>You need to find:</h1>
             {targets.map((target) => {
                 return (<>
                 <div className='flexContainer'>
@@ -37,9 +32,7 @@ const StartingScreen: React.FC<Props> = ({targets, startGame}) => {
             })}
             <button onClick={startGame}>Get started!</button>
             </div>
-            
-        </div>
     );
 }
 
-export default StartingScreen;
+export default TargetIntroduction;
