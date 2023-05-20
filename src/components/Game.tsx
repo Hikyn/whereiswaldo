@@ -6,7 +6,7 @@ import randomTargets from '../randomTargets';
 
 function Game() {
   // TO DO: Change boolean to True after starting game
-  const [isGameStarted, setIsGameStarted] = useState(false);
+  const [isGameStarted, setIsGameStarted] = useState(true);
   
   // TO DO: Change to true after implementing login system
   const [isLoggedIn, setIsLoggedIn] = useState(false);
