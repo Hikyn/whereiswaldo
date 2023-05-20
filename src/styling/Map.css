@@ -5,7 +5,15 @@
 }
 
 .map {
+    width: 100vw;
+}
+
+.overlay {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.711);
+    height: 100vh;
     width: 100%;
+    overflow: visible;
 }
 
 footer {

@@ -3,6 +3,7 @@ import '../styling/Game.css';
 import NavBar from './NavBar';
 import Map from './Map';
 import randomTargets from '../randomTargets';
+import StartingScreen from './StartingScreen';
 
 function Game() {
   type Target = {
@@ -15,7 +16,13 @@ function Game() {
 
   type TargetList = Target[];
   // TO DO: Change boolean to True after starting game
-  const [isGameStarted, setIsGameStarted] = useState(true);
+  const [isGameStarted, setIsGameStarted] = useState(false);
+
+  let startGame: () => void;
+  startGame = () => {
+    setIsGameStarted(true);
+  }
+
   const [isGameFinished, setIsGameFinished] = useState(false);
   
   // TO DO: Change to true after implementing login system
@@ -62,7 +69,8 @@ function Game() {
   return (
     <div className="Game">
       <NavBar isLoggedIn={isLoggedIn} isGameStarted={isGameStarted} isGameFinished={isGameFinished}/>
-      <Map targets={targets} addToFoundTargets={addToFoundTargets}/>
+      <Map targets={targets} addToFoundTargets={addToFoundTargets} isGameStarted={isGameStarted}/>
+      {isGameStarted ? '' : <StartingScreen targets={targets} startGame={startGame}/>}
     </div>
   );
 }

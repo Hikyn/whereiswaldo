@@ -20,9 +20,10 @@ interface Props {
         endX: number,
         endY: number
     }[],
-    addToFoundTargets: (target: Target) => void;
+    isGameStarted: boolean,
+    addToFoundTargets: (target: Target) => void,
 }
-const Map: React.FC<Props> = ({targets, addToFoundTargets}) => {
+const Map: React.FC<Props> = ({targets, addToFoundTargets, isGameStarted}) => {
     const [isClicked, setIsClicked] = useState(false);
     const [isMenuOnLeft, setIsMenuOnLeft] = useState(false);
     const [pageX, setPageX] = useState(0);
@@ -102,6 +103,7 @@ const Map: React.FC<Props> = ({targets, addToFoundTargets}) => {
 
     return (
     <div className="Map-container" onScroll={handleScroll}>
+        {!isGameStarted ? <div className='overlay'></div> : ''}
         <img className='map'src={map} alt='Giant poster with a lot of crossovers' onClick={handleClick}></img>
         <footer>
             <div className='card'>Made by <a href='https://github.com/Hikyn'>Hikyn</a></div>
