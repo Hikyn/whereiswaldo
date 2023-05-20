@@ -14,6 +14,11 @@
 
 .target-menu button {
     width: 95%;
+    background-color: rgba(235, 235, 235, 0.619);
+}
+
+.target-menu button:hover {
+    background-color: rgb(235, 235, 235);
 }
 
 .target-menu .flexContainer {
