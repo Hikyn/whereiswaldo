@@ -56,7 +56,7 @@ const Map: React.FC<Props> = ({targets, addToFoundTargets}) => {
 
     let handleScroll: () => void;
     handleScroll = () => {
-        console.log('Scrolling')
+        //console.log('Scrolling')
         setIsClicked(false);
     }
 

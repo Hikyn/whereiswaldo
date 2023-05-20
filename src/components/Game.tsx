@@ -30,6 +30,15 @@ function Game() {
       return
     } else {
       setFoundTargets([...foundTargets, target]);
+      let copyTargets = [...targets];
+      let i = 0;
+      targets.forEach((stateTarget) => {
+        if (stateTarget === target) {
+          copyTargets.splice(i, 1);
+        }
+        i += 1;
+      })
+      setTargets(copyTargets);
     }
   }
 
