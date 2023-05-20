@@ -4,6 +4,14 @@ import React, { useState } from 'react';
 import TargetBox from './TargetBox';
 import TargetMenu from './TargetMenu';
 
+type Target = {
+    name: string,
+    startX: number,
+    endX: number,
+    startY: number,
+    endY: number
+  }
+
 interface Props {
     targets: {
         name: string,
@@ -11,9 +19,10 @@ interface Props {
         startY: number,
         endX: number,
         endY: number
-    }[]
+    }[],
+    addToFoundTargets: (target: Target) => void;
 }
-const Map: React.FC<Props> = ({targets}) => {
+const Map: React.FC<Props> = ({targets, addToFoundTargets}) => {
     const [isClicked, setIsClicked] = useState(false);
     const [isMenuOnLeft, setIsMenuOnLeft] = useState(false);
     const [pageX, setPageX] = useState(0);
@@ -71,6 +80,7 @@ const Map: React.FC<Props> = ({targets}) => {
             }
 
             if(target['name'] === name) {
+                addToFoundTargets(target);
                 console.log('Correct!');
             }
         })

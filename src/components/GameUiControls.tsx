@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import '../styling/GameUiControls.css';
+interface Props {
+    isGameFinished: boolean;
+}
 
-function GameUiControls() {
+const GameUiControls: React.FC<Props> = ({isGameFinished}) => {
+
     const [seconds, setSeconds] = useState(0);
     const [isActive, setIsActive] = useState(true);
 
@@ -16,6 +20,13 @@ function GameUiControls() {
         }
         return () => clearInterval(interval);
       }, [isActive, seconds]);
+
+    useEffect(() => {
+        if (isGameFinished) {
+            setIsActive(false);
+            console.log(`Final time: ${Math.floor(seconds/60)}:${seconds%60 < 10 ? '0' + seconds%60 : seconds%60}`)
+        }
+      }, [seconds, isGameFinished]);
 
     return (
         <div className="GameUiControls">

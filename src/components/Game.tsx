@@ -5,47 +5,55 @@ import Map from './Map';
 import randomTargets from '../randomTargets';
 
 function Game() {
+  type Target = {
+    name: string,
+    startX: number,
+    endX: number,
+    startY: number,
+    endY: number
+  }
+
+  type TargetList = Target[];
   // TO DO: Change boolean to True after starting game
   const [isGameStarted, setIsGameStarted] = useState(true);
+  const [isGameFinished, setIsGameFinished] = useState(false);
   
   // TO DO: Change to true after implementing login system
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
+  const [foundTargets, setFoundTargets] = useState<TargetList>([]);
   
-  const [targets, setTargets] = useState([{
-    name: 'Avatar',
-    startX: 1950,
-    endX: 2054,
-    startY: 1473,
-    endY: 1607
-   }, {
-    name: 'Raiden',
-    startX: 356,
-    endX: 451,
-    startY: 3497,
-    endY: 3752
-   }, {
-    name: 'Little Nightmare',
-    startX: 999,
-    endX: 1064,
-    startY: 4129,
-    endY: 4210
-   }]);
+  let addToFoundTargets: (target: Target) => void;
+
+  addToFoundTargets = (target: Target) => {
+    if (foundTargets.includes(target)) {
+      return
+    } else {
+      setFoundTargets([...foundTargets, target]);
+    }
+  }
+
+  const [targets, setTargets] = useState<TargetList>([]);
 
   useEffect(() => {
-    let randomedTargets: {
-      name: string,
-      startX: number,
-      startY: number,
-      endX: number,
-      endY: number
-    }[] = randomTargets();
+    let randomedTargets: TargetList = randomTargets();
     setTargets(randomedTargets);
   }, []);
+
+  useEffect(() => {
+    if (foundTargets.length === 3) {
+      setIsGameFinished(true);
+    }
+  }, [foundTargets]);
+
+  useEffect(() => {
+    console.log(`NEW TARGET FOUND. Found targets:`);
+    console.log(foundTargets);
+  }, [foundTargets]);
   return (
     <div className="Game">
-      <NavBar isLoggedIn={isLoggedIn} isGameStarted={isGameStarted}/>
-      <Map targets={targets}/>
+      <NavBar isLoggedIn={isLoggedIn} isGameStarted={isGameStarted} isGameFinished={isGameFinished}/>
+      <Map targets={targets} addToFoundTargets={addToFoundTargets}/>
     </div>
   );
 }
