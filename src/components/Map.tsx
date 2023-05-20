@@ -31,8 +31,6 @@ const Map: React.FC<Props> = ({targets, addToFoundTargets}) => {
     let handleClick: (event: React.MouseEvent<HTMLElement>) => void;
     handleClick = (event) => {
         //console.log(event);
-        
-        console.log(event.pageX, event.pageY);
         setPageX(event.pageX);
         setPageY(event.pageY);
 
@@ -71,6 +69,7 @@ const Map: React.FC<Props> = ({targets, addToFoundTargets}) => {
         posY = (posY / boundingBox.height) * 4822;
         //console.log(`Adjusted target: ${posX}, ${posY}`)
         // Distance from target in pixels still counts
+        console.log(posX, posY);
         const allowedInaccuracy = 15;
         targets.forEach((target) => {
             if (posX > (target['endX'] + allowedInaccuracy) 

@@ -1,8 +1,11 @@
 # TO DO:
 
-1. Screen with map and character selection
-
-3. Add timer and save on backend
-4. Delete targetBox and menu automatically if cursor moved too far
+- [ ] Screen with map and character selection
+- [x] ~~Select targets randomly from list~~ 
+- [x] ~~Add timer~~
+  - [ ] Save scores on backend
+- [x] ~~Delete targetBox and menu on scroll~~
 
 # Bugs:
+
+- [x] ~~Game not working on different displays~~ (Fixed by making coordinates relative)
