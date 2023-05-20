@@ -22,7 +22,7 @@ const NavBar: React.FC<Props> = ({ targets, isLoggedIn, isGameStarted, isGameFin
     return (
         <div className="NavBar">
             {isGameStarted ? <GameUiControls isGameFinished={isGameFinished}/> : <></>}
-            <div className='targets'>
+            <div className='NavBar-targets'>
             {isGameStarted ? 
             targets.map((target) => {
                 return (<>

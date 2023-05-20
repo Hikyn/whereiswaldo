@@ -11,14 +11,17 @@
     color: white;
 }
 
-.NavBar .targets {
+.NavBar .NavBar-targets {
     display: flex;
     flex-direction: row;
     align-items: center;
     text-align: start;
+    padding: 0px;
+    height: 100%;
 }
 
-.NavBar .flexContainer {
+.NavBar .NavBar-targets .flexContainer {
+    height: 100%;
     display: flex;
     flex: 1;
     flex-direction: row;
@@ -29,7 +32,7 @@
     
 }
 
-.NavBar img {
+.NavBar .NavBar-targets .flexContainer img {
     height: 2em;
 }
 
