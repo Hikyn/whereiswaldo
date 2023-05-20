@@ -1,6 +1,6 @@
 import '../styling/Map.css';
 import map from '../images/egor-klyuchnyk-web-hd.jpg'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TargetBox from './TargetBox';
 import TargetMenu from './TargetMenu';
 
@@ -53,6 +53,13 @@ const Map: React.FC<Props> = ({targets, addToFoundTargets}) => {
             }
         }
     }
+
+    let handleScroll: () => void;
+    handleScroll = () => {
+        console.log('Scrolling')
+        setIsClicked(false);
+    }
+
     let validateAnswer: (name: string, posX: number, posY: number) => void;
     validateAnswer = (name, posX, posY) => {
         const existingMap = document.querySelector('.map');
@@ -85,8 +92,17 @@ const Map: React.FC<Props> = ({targets, addToFoundTargets}) => {
             }
         })
     }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll, { passive: true });
+    
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [handleScroll]);
+
     return (
-    <div className="Map-container">
+    <div className="Map-container" onScroll={handleScroll}>
         <img className='map'src={map} alt='Giant poster with a lot of crossovers' onClick={handleClick}></img>
         <footer>
             <div className='card'>Made by <a href='https://github.com/Hikyn'>Hikyn</a></div>
