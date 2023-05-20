@@ -21,9 +21,10 @@ interface Props {
         endY: number
     }[],
     isGameStarted: boolean,
+    isGameFinished: boolean,
     addToFoundTargets: (target: Target) => void,
 }
-const Map: React.FC<Props> = ({targets, addToFoundTargets, isGameStarted}) => {
+const Map: React.FC<Props> = ({targets, addToFoundTargets, isGameStarted, isGameFinished}) => {
     const [isClicked, setIsClicked] = useState(false);
     const [isMenuOnLeft, setIsMenuOnLeft] = useState(false);
     const [pageX, setPageX] = useState(0);
@@ -100,6 +101,10 @@ const Map: React.FC<Props> = ({targets, addToFoundTargets, isGameStarted}) => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, [handleScroll]);
+
+    useEffect(() => {
+        setIsClicked(false);
+    }, [isGameFinished]);
 
     return (
     <div className="Map-container" onScroll={handleScroll}>

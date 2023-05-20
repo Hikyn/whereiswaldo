@@ -6,6 +6,8 @@ import randomTargets from '../randomTargets';
 import PopUpScreen from './PopUpScreen';
 import Introduction from './Introduction';
 import TargetIntroduction from './TargetIntroduction';
+import LeaderBoard from './LeaderBoard';
+import SubmitScreen from './SubmitScreen';
 
 function Game() {
   type Target = {
@@ -71,8 +73,9 @@ function Game() {
   return (
     <div className="Game">
       <NavBar targets={targets} isLoggedIn={isLoggedIn} isGameStarted={isGameStarted} isGameFinished={isGameFinished}/>
-      <Map targets={targets} addToFoundTargets={addToFoundTargets} isGameStarted={isGameStarted}/>
+      <Map targets={targets} addToFoundTargets={addToFoundTargets} isGameFinished={isGameFinished} isGameStarted={isGameStarted}/>
       {isGameStarted ? '' : <PopUpScreen leftSide={<Introduction />} rightSide={<TargetIntroduction targets={targets} startGame={startGame}/>} />}
+      {isGameFinished ? <PopUpScreen leftSide={<LeaderBoard />} rightSide={<SubmitScreen />}/> : ''}
     </div>
   );
 }
