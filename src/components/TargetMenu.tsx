@@ -38,7 +38,10 @@ const TargetMenu: React.FC<Props> = ({
             <style>{css}</style>
             {targets.map((target) => {
                 return(
-                    <button key={target.name} onClick={() => validateAnswer(target.name, pageX, pageY)}>{target.name}</button>
+                    <div className='flexContainer'>
+                        <img src={'images/' + target.name + '.png'} alt={'Image of ' + target.name}></img>
+                        <button key={target.name} onClick={() => validateAnswer(target.name, pageX, pageY)}>{target.name}</button>
+                    </div>
                 )
             })}
         </div>

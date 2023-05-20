@@ -11,7 +11,7 @@ interface Props {
 const NavBar: React.FC<Props> = ({ isLoggedIn, isGameStarted, isGameFinished}) => {
     return (
         <div className="NavBar">
-            {isGameStarted ? <GameUiControls isGameFinished={isGameFinished}/> : <>NO UI</>}
+            {isGameStarted ? <GameUiControls isGameFinished={isGameFinished}/> : <></>}
         </div>
     );
 }

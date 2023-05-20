@@ -30,7 +30,9 @@ const GameUiControls: React.FC<Props> = ({isGameFinished}) => {
 
     return (
         <div className="GameUiControls">
+            <h2>
             Timer: {Math.floor(seconds/60)}:{seconds%60 < 10 ? '0' + seconds%60 : seconds%60}
+            </h2>
         </div>
     );
 }

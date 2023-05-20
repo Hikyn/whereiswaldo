@@ -5,12 +5,25 @@
     width: var(--target-menu-size);
     border: 3px solid white;
     transition: all 1s;
-    display: flex;
+    display: grid;
+    grid: 1fr 1fr 1fr/1fr;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .target-menu button {
     width: 95%;
+}
+
+.target-menu .flexContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-right: 2rem;
+}
+
+.target-menu .flexContainer img {
+    margin-right: 1em;
+    height: 3em;
 }
