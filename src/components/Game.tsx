@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../styling/Game.css';
 import NavBar from './NavBar';
 import Map from './Map';
+import randomTargets from '../randomTargets';
 
 function Game() {
   // TO DO: Change boolean to True after starting game
@@ -9,6 +10,7 @@ function Game() {
   
   // TO DO: Change to true after implementing login system
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
   
   const [targets, setTargets] = useState([{
     name: 'Avatar',
@@ -29,6 +31,17 @@ function Game() {
     startY: 4129,
     endY: 4210
    }]);
+
+  useEffect(() => {
+    let randomedTargets: {
+      name: string,
+      startX: number,
+      startY: number,
+      endX: number,
+      endY: number
+    }[] = randomTargets();
+    setTargets(randomedTargets);
+  }, []);
   return (
     <div className="Game">
       <NavBar isLoggedIn={isLoggedIn} isGameStarted={isGameStarted}/>

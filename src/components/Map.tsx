@@ -21,7 +21,7 @@ const Map: React.FC<Props> = ({targets}) => {
 
     let handleClick: (event: React.MouseEvent<HTMLElement>) => void;
     handleClick = (event) => {
-        console.log(event);
+        //console.log(event);
         
         console.log(event.pageX, event.pageY);
         setPageX(event.pageX);
@@ -48,18 +48,25 @@ const Map: React.FC<Props> = ({targets}) => {
     validateAnswer = (name, posX, posY) => {
         const existingMap = document.querySelector('.map');
         const boundingBox = existingMap?.getBoundingClientRect()!;
-        console.log(boundingBox)
+        //console.log(boundingBox)
         // 2400 is display width on which i wrote target coordinates initially
         posX = (posX / boundingBox.width) * 2400;
         // 4822 is display height on which i wrote target coordinates initially
         posY = (posY / boundingBox.height) * 4822;
-        console.log(`Target: ${posX}, ${posY}`)
+        //console.log(`Adjusted target: ${posX}, ${posY}`)
+        // Distance from target in pixels still counts
+        const allowedInaccuracy = 15;
         targets.forEach((target) => {
-            if(posX > target['endX'] || posX < target['startX']) {
+            if (posX > (target['endX'] + allowedInaccuracy) 
+                || 
+                posX < (target['startX'] - allowedInaccuracy)) 
+            {
                 return
             }
 
-            if(posY > target['endY'] || posY < target['startY']) {
+            if (posY > (target['endY'] + allowedInaccuracy) 
+                || 
+                posY < (target['startY'] - allowedInaccuracy)) {
                 return
             }
 
