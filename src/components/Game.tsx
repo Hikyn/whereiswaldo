@@ -68,7 +68,7 @@ function Game() {
   }, [foundTargets]);
   return (
     <div className="Game">
-      <NavBar isLoggedIn={isLoggedIn} isGameStarted={isGameStarted} isGameFinished={isGameFinished}/>
+      <NavBar targets={targets} isLoggedIn={isLoggedIn} isGameStarted={isGameStarted} isGameFinished={isGameFinished}/>
       <Map targets={targets} addToFoundTargets={addToFoundTargets} isGameStarted={isGameStarted}/>
       {isGameStarted ? '' : <StartingScreen targets={targets} startGame={startGame}/>}
     </div>

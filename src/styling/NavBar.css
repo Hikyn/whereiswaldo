@@ -1,7 +1,33 @@
 .NavBar {
+    display: grid;
+    grid: 3rem/4fr 1fr;
+    justify-content: space-around;
+    align-items: center;
     position: sticky;
     top: 0px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.388);
     width: 100%;
     text-align: center;
 }
+
+.NavBar .targets {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: start;
+}
+
+.NavBar .flexContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: min(5%, 2em);
+    margin: 5px;
+}
+
+.NavBar img {
+    height: 2em;
+}
+
