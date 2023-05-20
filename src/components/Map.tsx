@@ -21,7 +21,8 @@ const Map: React.FC<Props> = ({targets}) => {
 
     let handleClick: (event: React.MouseEvent<HTMLElement>) => void;
     handleClick = (event) => {
-        //console.log(event);
+        console.log(event);
+        
         console.log(event.pageX, event.pageY);
         setPageX(event.pageX);
         setPageY(event.pageY);
@@ -29,6 +30,7 @@ const Map: React.FC<Props> = ({targets}) => {
         // If target box is present, we remove it. Otherwise, we draw it
         const existingTargetBox = document.querySelector('.target-box');
         const existingTargetMenu = document.querySelector('.target-menu');
+        
         if (existingTargetBox && existingTargetMenu) {
             setIsClicked(false);
         } else {
@@ -44,6 +46,14 @@ const Map: React.FC<Props> = ({targets}) => {
     }
     let validateAnswer: (name: string, posX: number, posY: number) => void;
     validateAnswer = (name, posX, posY) => {
+        const existingMap = document.querySelector('.map');
+        const boundingBox = existingMap?.getBoundingClientRect()!;
+        console.log(boundingBox)
+        // 2400 is display width on which i wrote target coordinates initially
+        posX = (posX / boundingBox.width) * 2400;
+        // 4822 is display height on which i wrote target coordinates initially
+        posY = (posY / boundingBox.height) * 4822;
+        console.log(`Target: ${posX}, ${posY}`)
         targets.forEach((target) => {
             if(posX > target['endX'] || posX < target['startX']) {
                 return

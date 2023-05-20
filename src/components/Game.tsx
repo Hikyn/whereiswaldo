@@ -29,7 +29,6 @@ function Game() {
     startY: 4129,
     endY: 4210
    }]);
-
   return (
     <div className="Game">
       <NavBar isLoggedIn={isLoggedIn} isGameStarted={isGameStarted}/>
