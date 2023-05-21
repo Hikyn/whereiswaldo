@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styling/Game.css';
 import NavBar from './NavBar';
 import Map from './Map';
@@ -9,7 +9,11 @@ import TargetIntroduction from './TargetIntroduction';
 import LeaderBoard from './LeaderBoard';
 import SubmitScreen from './SubmitScreen';
 
-function Game() {
+interface Props {
+  writeScoreToDB: (name: string, score: number, usedSecretCode: string) => void;
+}
+
+const Game: React.FC<Props> = ({writeScoreToDB}) => {
   type Target = {
     name: string,
     startX: number,
@@ -77,7 +81,7 @@ function Game() {
       <NavBar targets={targets} isLoggedIn={isLoggedIn} isGameStarted={isGameStarted} isGameFinished={isGameFinished} setFinalTime={setFinalTime}/>
       <Map targets={targets} addToFoundTargets={addToFoundTargets} isGameFinished={isGameFinished} isGameStarted={isGameStarted}/>
       {isGameStarted ? '' : <PopUpScreen leftSide={<Introduction />} rightSide={<TargetIntroduction targets={targets} startGame={startGame}/>} />}
-      {isGameFinished ? <PopUpScreen leftSide={<LeaderBoard />} rightSide={<SubmitScreen finalTime={finalTime}/>}/> : ''}
+      {isGameFinished ? <PopUpScreen leftSide={<LeaderBoard />} rightSide={<SubmitScreen finalTime={finalTime} writeScoreToDB={writeScoreToDB}/>}/> : ''}
     </div>
   );
 }

@@ -10,6 +10,7 @@
 
 # api keys
 /src/firebase-config.js
+/src/checkSecretCode.tsx
 
 # production
 /build
