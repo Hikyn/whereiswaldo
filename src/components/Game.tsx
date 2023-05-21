@@ -11,9 +11,13 @@ import SubmitScreen from './SubmitScreen';
 
 interface Props {
   writeScoreToDB: (name: string, score: number, usedSecretCode: string) => void;
+  readScoresFromDB: () => Promise<[{
+    name: string,
+    time: string
+  }]>;
 }
 
-const Game: React.FC<Props> = ({writeScoreToDB}) => {
+const Game: React.FC<Props> = ({writeScoreToDB, readScoresFromDB}) => {
   type Target = {
     name: string,
     startX: number,
@@ -35,6 +39,7 @@ const Game: React.FC<Props> = ({writeScoreToDB}) => {
   
   // TO DO: Change to true after implementing login system
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isScoreSubmited, setIsScoreSubmited] = useState(false);
   
   const [foundTargets, setFoundTargets] = useState<TargetList>([]);
   
@@ -81,7 +86,7 @@ const Game: React.FC<Props> = ({writeScoreToDB}) => {
       <NavBar targets={targets} isLoggedIn={isLoggedIn} isGameStarted={isGameStarted} isGameFinished={isGameFinished} setFinalTime={setFinalTime}/>
       <Map targets={targets} addToFoundTargets={addToFoundTargets} isGameFinished={isGameFinished} isGameStarted={isGameStarted}/>
       {isGameStarted ? '' : <PopUpScreen leftSide={<Introduction />} rightSide={<TargetIntroduction targets={targets} startGame={startGame}/>} />}
-      {isGameFinished ? <PopUpScreen leftSide={<LeaderBoard />} rightSide={<SubmitScreen finalTime={finalTime} writeScoreToDB={writeScoreToDB}/>}/> : ''}
+      {isGameFinished ? <PopUpScreen leftSide={<LeaderBoard readScoresFromDB={readScoresFromDB} isScoreSubmited={isScoreSubmited}/>} rightSide={<SubmitScreen isScoreSubmited={isScoreSubmited} setIsScoreSubmited={setIsScoreSubmited} finalTime={finalTime} writeScoreToDB={writeScoreToDB}/>}/> : ''}
     </div>
   );
 }

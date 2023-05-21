@@ -5,8 +5,9 @@ import Game from './components/Game';
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from "firebase/firestore";
 import { getFirebaseConfig } from './firebase-config';
-import { doc, setDoc } from "firebase/firestore"; 
+import { doc, getDocs, setDoc, query, collection } from "firebase/firestore"; 
 import checkSecretCode from './checkSecretCode';
+import { stringify } from 'querystring';
 
 // SUPER SECRET PRIVATE KEYS
 const firebaseAppConfig = getFirebaseConfig();
@@ -35,10 +36,35 @@ writeScoreToDB = async (name, score, usedSecretCode) => {
 });
 }
 
+let readScoresFromDB: () => Promise<[{
+  name: string,
+  time: string
+}]>;
+readScoresFromDB = async () => {
+  const q = query(collection(db, "scores"));
+  const querySnapshot = await getDocs(q);
+  
+  let leaderboard: [{
+    name: string,
+    time: string
+  }] = [{
+    name: '',
+    time: ''
+  }];
+  querySnapshot.forEach((doc) => {
+    leaderboard.push({
+      name: doc.data()['name'],
+      time: doc.data()['time']
+    })
+  })
+
+  return leaderboard
+}
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <><Game writeScoreToDB={writeScoreToDB}/></>
+  <><Game writeScoreToDB={writeScoreToDB} readScoresFromDB={readScoresFromDB}/></>
   
 );

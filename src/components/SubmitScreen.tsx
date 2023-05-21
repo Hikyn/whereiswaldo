@@ -3,13 +3,14 @@ import '../styling/SubmitScreen.css';
 
 interface Props {
     finalTime: number;
+    isScoreSubmited: boolean;
+    setIsScoreSubmited: (bool: boolean) => void;
     writeScoreToDB: (name: string, score: number, usedSecretCode: string) => void;
 }
 
-const SubmitScreen: React.FC<Props> = ({finalTime, writeScoreToDB}) => {
+const SubmitScreen: React.FC<Props> = ({finalTime, writeScoreToDB, isScoreSubmited, setIsScoreSubmited}) => {
     const [username, setUsername] = useState('');
     const [secretCode, setSecretCode] = useState('');
-    const [isScoreSubmited, setIsScoreSubmited] = useState(false);
 
     let handleSubmit: (event: FormEvent) => void;
     handleSubmit = async (event) => {

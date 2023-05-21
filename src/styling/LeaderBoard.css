@@ -1,3 +1,18 @@
 .LeaderBoard {
     padding: 0em 1em;
 }
+
+.LeaderBoard .entry {
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
+    padding: 1em;
+    border-radius: 1em;
+    background-color: white;
+}
+
+.LeaderBoard .entry .name {
+    color: rgb(125, 107, 2);
+    border-radius: 0.2em;
+    box-shadow: 1px 1px 1px 1px;
+}
