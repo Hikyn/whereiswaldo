@@ -56,6 +56,7 @@ https://where-is-waldo-ca911.web.app/
   - [x] ~~Submit score component on right which submits to backend~~
     - [x] ~~Result submits only if user has correct secret code~~
 - [ ] Revisit semantics when I learn them (dont forget to change divs and lists) 
+- [ ] JEST react testing may be?
 
 # Bugs:
 
