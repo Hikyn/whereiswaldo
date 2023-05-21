@@ -55,6 +55,8 @@ function Game() {
 
   const [targets, setTargets] = useState<TargetList>([]);
 
+  const [finalTime, setFinalTime] = useState(0);
+
   useEffect(() => {
     let randomedTargets: TargetList = randomTargets();
     setTargets(randomedTargets);
@@ -72,10 +74,10 @@ function Game() {
   }, [foundTargets]);
   return (
     <div className="Game">
-      <NavBar targets={targets} isLoggedIn={isLoggedIn} isGameStarted={isGameStarted} isGameFinished={isGameFinished}/>
+      <NavBar targets={targets} isLoggedIn={isLoggedIn} isGameStarted={isGameStarted} isGameFinished={isGameFinished} setFinalTime={setFinalTime}/>
       <Map targets={targets} addToFoundTargets={addToFoundTargets} isGameFinished={isGameFinished} isGameStarted={isGameStarted}/>
       {isGameStarted ? '' : <PopUpScreen leftSide={<Introduction />} rightSide={<TargetIntroduction targets={targets} startGame={startGame}/>} />}
-      {isGameFinished ? <PopUpScreen leftSide={<LeaderBoard />} rightSide={<SubmitScreen />}/> : ''}
+      {isGameFinished ? <PopUpScreen leftSide={<LeaderBoard />} rightSide={<SubmitScreen finalTime={finalTime}/>}/> : ''}
     </div>
   );
 }

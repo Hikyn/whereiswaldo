@@ -5,7 +5,7 @@ const LeaderBoard = () => {
 
     return (
         <div className="LeaderBoard">
-            LeaderBoard
+            <h1>LeaderBoard</h1>
         </div>
     );
 }

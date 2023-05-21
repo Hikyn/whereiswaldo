@@ -1,0 +1,32 @@
+.SubmitScreen {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 1em;
+}
+
+.SubmitScreen h1 {
+    margin-bottom: 0px;
+}
+
+.SubmitScreen h3 {
+    margin: 0px;
+}
+
+.submit {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+form .grid {
+    display: grid;
+    grid: 1fr 1fr/ 1fr 1fr;
+    grid-auto-rows: 1fr;
+    grid-auto-columns: 1fr;
+    padding: 1em 0px;
+    gap: 1em;
+}
+
+form .grid .fullwidth {
+    grid-column: 1 / -1;
+}

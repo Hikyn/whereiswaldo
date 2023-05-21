@@ -16,12 +16,13 @@ interface Props {
     isLoggedIn: boolean;
     isGameStarted: boolean;
     isGameFinished: boolean;
+    setFinalTime: (seconds: number) => void
 }
 
-const NavBar: React.FC<Props> = ({ targets, isLoggedIn, isGameStarted, isGameFinished}) => {
+const NavBar: React.FC<Props> = ({ targets, isLoggedIn, isGameStarted, isGameFinished, setFinalTime}) => {
     return (
         <div className="NavBar">
-            {isGameStarted ? <GameUiControls isGameFinished={isGameFinished}/> : <></>}
+            {isGameStarted ? <GameUiControls isGameFinished={isGameFinished} setFinalTime={setFinalTime}/> : <></>}
             <div className='NavBar-targets'>
             {isGameStarted ? 
             targets.map((target) => {
