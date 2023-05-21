@@ -35,7 +35,68 @@ const randomTargets = () => {
         endX: 993,
         startY: 3495,
         endY: 3625
-       }]
+       }, {
+        name: 'CJ',
+        startX: 661,
+        endX: 748,
+        startY: 491,
+        endY: 689
+       }, {
+        name: 'Trevor',
+        startX: 1233,
+        endX: 1325,
+        startY: 612,
+        endY: 789
+       }, {
+        name: 'Bang (Silver Fang)',
+        startX: 430,
+        endX: 558,
+        startY: 4222,
+        endY: 4463
+       }, {
+        name: 'Phoenix Wright',
+        startX: 1168,
+        endX: 1257,
+        startY: 1157,
+        endY: 1453
+       }, {
+        name: 'Beavis',
+        startX: 1431,
+        endX: 1534,
+        startY: 1816,
+        endY: 1958
+       }, {
+        name: 'Harrier Du Bois',
+        startX: 491,
+        endX: 582,
+        startY: 2109,
+        endY: 2383
+       }, {
+        name: 'Jaskier (Dandellion)',
+        startX: 1822,
+        endX: 2066,
+        startY: 1842,
+        endY: 2003
+       }, {
+        name: 'Jake',
+        startX: 1803,
+        endX: 1875,
+        startY: 2515,
+        endY: 2589
+       }, {
+        name: 'Bill Cipher',
+        startX: 233,
+        endX: 363,
+        startY: 351,
+        endY: 439
+       }, {
+        name: 'Helga',
+        startX: 1190,
+        endX: 1245,
+        startY: 3242,
+        endY: 3332
+       },
+    ]
     let targetList: {
         name: string,
         startX: number,

@@ -5,9 +5,11 @@
 - [x] ~~Target images on TargetMenu~~
 - [x] ~~Select targets randomly from list~~ 
 - [x] ~~Add timer~~
-  - [ ] Save scores on backend
 - [x] ~~Delete targetBox and menu on scroll~~
-- [ ] Winning screen
+- [x] Winning screen
+  - [ ] Display Win message and current time on top part
+  - [ ] Leaderboard component on left which reads from backend
+  - [ ] Submit score component on right which submits to backend
 
 # Bugs:
 
