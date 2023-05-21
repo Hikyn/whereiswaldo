@@ -28,7 +28,7 @@ const NavBar: React.FC<Props> = ({ targets, isLoggedIn, isGameStarted, isGameFin
                 return (<>
                 <div className='flexContainer'>
                     <img src={'images/' + target.name + '.png'} alt={'Image of ' + target.name}></img>
-                    <div key={target.name}>{target.name}</div>
+                    <div key={'NavBar-' + target.name}>{target.name}</div>
                 </div>
                     <br></br>
                 </>)

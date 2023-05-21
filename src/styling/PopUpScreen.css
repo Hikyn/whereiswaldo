@@ -1,7 +1,7 @@
 .StartingScreen {
     position: fixed;
     display: grid;
-    grid: 1fr/ 1fr 1fr;
+    grid: 1fr/ 1fr 4px 1fr;
     top: 5rem;
     width: 60%;
     min-height: 40%;
@@ -33,4 +33,8 @@
         font-size: 0.9rem;
         width: 90%;
     }
+}
+
+.StartingScreen .border {
+    border-right: 5px solid rgba(0, 0, 0, 0.319);
 }
