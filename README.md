@@ -44,11 +44,12 @@
 <img src="src/images/preview.gif " height="500"/>
 </details>
 
+## Live at:
 <b>Live preview at</b>: https://waldo.hikyn.dev/
 
 <b>View my full portfolio</b>: https://hikyn.dev/
 
-# TO DO:
+## TO DO:
 
 - [x] ~~Screen with map and character selection~~
 - [x] ~~Targets on navbar~~
