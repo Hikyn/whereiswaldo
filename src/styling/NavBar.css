@@ -1,38 +1,36 @@
 .NavBar {
-    display: grid;
-    grid: 3rem/4fr 1fr;
-    justify-content: space-around;
-    align-items: center;
-    position: sticky;
-    top: 0px;
-    background-color: rgba(10, 10, 10, 0.877);
-    width: 100%;
-    text-align: center;
-    color: white;
+  display: grid;
+  grid: 3rem/4fr 1fr;
+  justify-content: space-around;
+  align-items: center;
+  position: sticky;
+  top: 0px;
+  background-color: rgba(10, 10, 10, 0.877);
+  width: 100%;
+  text-align: center;
+  color: white;
 }
 
 .NavBar .NavBar-targets {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-align: start;
-    padding: 0px;
-    height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: start;
+  padding: 0px;
+  height: 100%;
 }
 
 .NavBar .NavBar-targets .flexContainer {
-    height: 100%;
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    gap: min(5%, 2em);
-    margin: 5px;
-    
+  height: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: min(5%, 2em);
+  margin: 5px;
 }
 
 .NavBar .NavBar-targets .flexContainer img {
-    height: 2em;
+  height: 2em;
 }
-

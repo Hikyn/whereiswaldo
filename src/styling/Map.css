@@ -1,46 +1,46 @@
 .Map-container {
-    /*Important for centering target-box via JS*/
+  /*Important for centering target-box via JS*/
 
-    --target-box-size: 100px;
+  --target-box-size: 100px;
 }
 
 .map {
-    width: 100vw;
+  width: 100vw;
 }
 
 .overlay {
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.711);
-    height: 100vh;
-    width: 100%;
-    overflow: visible;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.711);
+  height: 100vh;
+  width: 100%;
+  overflow: visible;
 }
 
 footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
-    position: sticky;
-    bottom: 0rem;
+  position: sticky;
+  bottom: 0rem;
 
-    margin: -6rem 3rem;
+  margin: -6rem 3rem;
 
-    /* Make element pass-through */
-    pointer-events: none;
+  /* Make element pass-through */
+  pointer-events: none;
 }
 
 footer .card {
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 2rem;
-    background-color: rgba(245, 222, 179, 0.282);
-    transition: all 1s;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 2rem;
+  background-color: rgba(245, 222, 179, 0.282);
+  transition: all 1s;
 
-    /* Make element pass-through */
-    pointer-events: auto;
+  /* Make element pass-through */
+  pointer-events: auto;
 }
 
 footer .card:hover {
-    background-color: rgb(245, 222, 179);
+  background-color: rgb(245, 222, 179);
 }

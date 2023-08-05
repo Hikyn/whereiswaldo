@@ -1,32 +1,32 @@
 .targets {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: start;
 }
 
 .targets .flexContainer {
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    gap: min(5%, 2em);
-    margin: 5px;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: min(5%, 2em);
+  margin: 5px;
 }
 
 .targets img {
-    height: 5em;
+  height: 5em;
 }
 
 .targets .flexContainer div {
-    padding: 0.3em 1em;
-    border: 3px solid rgba(0, 0, 0, 0.392);
-    border-radius: 2em;
+  padding: 0.3em 1em;
+  border: 3px solid rgba(0, 0, 0, 0.392);
+  border-radius: 2em;
 }
 
 .targets button {
-    margin-top:auto;
-    height: min(20%, 6em);
-    width: 50%;
+  margin-top: auto;
+  height: min(20%, 6em);
+  width: 50%;
 }
