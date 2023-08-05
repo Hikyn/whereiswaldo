@@ -37,8 +37,15 @@
 
 ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase)
 
-# Demo:
-https://where-is-waldo-ca911.web.app/
+<details>
+<summary><b>Preview gif</b></summary>
+<br>
+<img src="src/images/preview.gif " height="500"/>
+</details>
+
+<b>Live preview at</b>: https://waldo.hikyn.dev/
+
+<b>View my full portfolio</b>: https://hikyn.dev/
 
 # TO DO:
 
